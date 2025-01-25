@@ -1,0 +1,402 @@
+{
+    "@@locale": "en",
+    "language": "English",
+    "@language": {
+        "description": "The current language"
+    },
+    "authPagesWelcomeLabelOne": "Welcome!",
+    "@authPagesWelcomeLabelOne": {
+        "description": "Welcome label for login and register page"
+    },
+    "authPagesRegisterButtonLabel": "Register",
+    "@authPagesRegisterButtonLabel": {
+        "description": "label for register button"
+    },
+    "authPagesLoginButtonLabel": "Log in",
+    "@authPagesLoginButtonLabel": {
+        "description": "label for log in button"
+    },
+    "authPagesSelectOrganizationLabel": "Please select your Organization below",
+    "@authPagesSelectOrganizationLabel": {},
+    "authPagesForgotPasswordButtonLabel": "Forgot Password?",
+    "@authPagesForgotPasswordButtonLabel": {
+        "description": "label for the forgot password button"
+    },
+    "authPagesAccessDeniedErrorMessage": "You do not have the necessary permissions to access this site. If you should have those or need them contact the responsible Administrator of your Organization.",
+    "@authPagesAccessDeniedErrorMessage": {
+        "description": "displays this message if the user does not have the necessary permissions to view part of the site"
+    },
+    "authPagesRegisterAcceptToSAndPrivacyPolicyErrorMessage": "Please Accept the ToS and Privacy Policy",
+    "@authPagesRegisterAcceptToSAndPrivacyPolicyErrorMessage": {
+        "description": "message for pop up field if ToS and Privacy Policy is not accepted by the User"
+    },
+    "authPagesRegisterWelcomeLabelTwo": "Please register below",
+    "@authPagesRegisterWelcomeLabelTwo": {
+        "description": "Second welcome label for the register page"
+    },
+    "authPagesRegisterToSandPrivacyPolicyCheckbox": "I accept the {tos} and {privacyPolicy}",
+    "@authPagesRegisterToSandPrivacyPolicyCheckbox": {
+        "placeholders": {
+            "tos": {},
+            "privacyPolicy": {}
+        }
+    },
+    "authPagesOrgNotSelectedErrorLabel": "Please select an organization",
+    "@authPagesOrgNotSelectedErrorLabel": {},
+    "authPagesAccountCreatedSuccesfully": "Account created successfully",
+    "@authPagesAccountCreatedSuccesfully": {},
+    "authPagesSignatureMissing": "Please sign all required fields",
+    "@authPagesSignatureMissing": {},
+    "authPagesFieldMissing": "Please fill in all required fields",
+    "@authPagesFieldMissing": {},
+    "authPagesRegisterConfirmPasswordTextFieldHintText": "Confirm Password",
+    "@authPagesRegisterConfirmPasswordTextFieldHintText": {
+        "description": "hint text for confirm user password field only necessesary for register page"
+    },
+    "authPagesRegisterSuccessSnackbarLabel": "Account created successfully!",
+    "@authPagesRegisterSuccessSnackbarLabel": {
+        "description": "Snackbar label for successful registration"
+    },
+    "authPagesLoginWelcomeLabelTwo": "Welcome back, we missed you!",
+    "@authPagesLoginWelcomeLabelTwo": {
+        "description": "Second welcome label for the login page"
+    },
+    "authPagesConfirmPasswordErrorSnackbarLabel": "The password do not match. Please confirm that they are the same",
+    "@authPagesConfirmPasswordErrorSnackbarLabel": {
+        "description": ""
+    },
+    "authPagesUserNotFoundErrorMessage": "You might be on the wrong organization's page or your account might have been deleted by this organizations administrator. If you are not, please contact your organization's administrator or Print In Progress support.",
+    "@authPagesUserNotFoundErrorMessage": {},
+    "authPagesAccountAlreadyExistsWithOtherOrgErrorMessage": "You already have an account with another organization that uses NewsApp. Please log in to that account by filling out the forms below, and we will add you to this organization.",
+    "@authPagesAccountAlreadyExistsWithOtherOrgErrorMessage": {},
+    "authPagesVerifyEmailPageTitle": "Email Verification",
+    "@authPagesVerifyEmailPageTitle": {},
+    "authPagesVerifyEmailPageContent": "A verification link has been sent to your email. Please verify your email.",
+    "@authPagesVerifyEmailPageContent": {},
+    "forgotPasswordPageSuccessLinkSendSnackbarMessage": "Password reset link send! Check your Email!",
+    "@forgotPasswordPageSuccessLinkSendSnackbarMessage": {
+        "description": ""
+    },
+    "forgotPasswordPagePasswordResetLabel": "Please enter your Email and we will send you a password reset link",
+    "@forgotPasswordPagePasswordResetLabel": {
+        "description": ""
+    },
+    "forgotPasswordPageResetPasswordButtonLabel": "Reset Password",
+    "@forgotPasswordPageResetPasswordButtonLabel": {},
+    "settingsPageManageAccountCardLabel": "Manage my PIP Account",
+    "@settingsPageManageAccountCardLabel": {},
+    "settingsPageNewEmailHintText": "New Email",
+    "settingsPageChangeNameButtonLabel": "Name",
+    "@settingsPageChangeNameButtonLabel": {
+        "description": ""
+    },
+    "settingsPageCurrentPasswordHintText": "Current Password",
+    "@settingsPageCurrentPasswordHintText": {},
+    "settingsPageNewPasswordHintText": "New Password",
+    "@settingsPageNewPasswordHintText": {},
+    "@settingsPageNewEmailHintText": {
+        "description": ""
+    },
+    "settingsPagePersonalDataCardLabel": "Personal Data",
+    "@settingsPagePersonalDataCardLabel": {
+        "description": ""
+    },
+    "settingsPageAppearanceCardLabel": "Appearance",
+    "@settingsPageAppearanceCardLabel": {
+        "description": ""
+    },
+    "settingsPageDeletePIPAccountButtonLabel": "Delete my PIP Account",
+    "@settingsPageDeletePIPAccountButtonLabel": {
+        "description": ""
+    },
+    "settingsPageEnableDarkModeSwitchTileLabel": "Dark Mode",
+    "@settingsPageEnableDarkModeSwitchTileLabel": {
+        "description": ""
+    },
+    "settingsPageSuccessOnPersonalDataChangedSnackbarContent": "Your personal data was changed successfully",
+    "@settingsPageSuccessOnPersonalDataChangedSnackbarContent": {
+        "description": ""
+    },
+    "settingsPageSuccessOnEmailChangedSnackbarContent": "Your Email was changed succesfully",
+    "@settingsPageSuccessOnEmailChangedSnackbarContent": {
+        "description": ""
+    },
+    "settingsPageActionRequiresReauthentification": "This operation is sensitive and requires recent reauthentification",
+    "@settingsPageActionRequiresReauthentification": {},
+    "settingsPageSuccessOnPasswordChangedSnackbarLabel": "Password changed successfully",
+    "@settingsPageSuccessOnPasswordChangedSnackbarLabel": {
+        "description": ""
+    },
+    "settingsPageSuccessOnDeleteAccountSnackbarLabel": "Account deleted successfully. We're sad to see you go.",
+    "@settingsPageSuccessOnDeleteAccountSnackbarLabel": {
+        "description": ""
+    },
+    "settingsPageAccountDeleteDialogContent": "We're sad to see you go!",
+    "@settingsPageAccountDeleteDialogContent": {
+        "description": ""
+    },
+    "settingsPageMyActivityCardLabel": "My Activity",
+    "@settingsPageMyActivityCardLabel": {
+        "description": ""
+    },
+    "settingsPageMyLikesAndDislikesButtonLabel": "My Likes/Dislikes",
+    "@settingsPageMyLikesAndDislikesButtonLabel": {
+        "description": ""
+    },
+    "settingsPageResubmitQuestionaire": "Resubmit Questionnaire",
+    "@settingsPageResubmitQuestionaire": {},
+    "settingsPageMyCommentsButtonLabel": "My Comments",
+    "@settingsPageMyCommentsButtonLabel": {
+        "description": ""
+    },
+    "settingsPageOnSuccessCommentDeleted": "Comment deleted successfully",
+    "@settingsPageOnSuccessCommentDeleted": {
+        "description": ""
+    },
+    "settingsPageCommmentDeletionConfirmationDialogContent": "The comment can not be restored after deletion",
+    "@settingsPageCommmentDeletionConfirmationDialogContent": {
+        "description": ""
+    },
+    "settingsPageMyCommentsPageTitle": "My Comments",
+    "@settingsPageMyCommentsPageTitle": {
+        "description": ""
+    },
+    "settingsPageMyLikesTabbarTitle": "My Likes",
+    "@settingsPageMyLikesTabbarTitle": {
+        "description": ""
+    },
+    "settingsPageErrorDeletingUserFolder": "Error deleting User Folder: {error}",
+    "@settingsPageErrorDeletingUserFolder": {
+        "placeholders": {
+            "error": {}
+        }
+    },
+    "settingsPageChangeOrganizationButtonLabel": "Change Organization",
+    "@settingsPageChangeOrganizationButtonLabel": {},
+    "settingsPageMyDislikesTabbarTitle": "My Dislikes",
+    "@settingsPageMyDislikesTabbarTitle": {
+        "description": ""
+    },
+    "homePageBlogNavbarButtonLabel": "Blog",
+    "@homePageBlogNavbarButtonLabel": {},
+    "homePageEventsNavbarButtonLabel": "Events",
+    "@homePageEventsNavbarButtonLabel": {},
+    "homePageMessagingNavbarButtonLabel": "Messaging",
+    "@homePageMessagingNavbarButtonLabel": {},
+    "filtersSearchBarHintText": "Search",
+    "@filtersSearchBarHintText": {
+        "description": ""
+    },
+    "filtersAllChipLabel": "All",
+    "@filtersAllChipLabel": {
+        "description": ""
+    },
+    "filtersNewestChipLabel": "Newest",
+    "@filtersNewestChipLabel": {},
+    "filtersOldestChipLabel": "Oldest",
+    "@filtersOldestChipLabel": {
+        "description": ""
+    },
+    "filtersTopChipLabel": "Top",
+    "@filtersTopChipLabel": {
+        "description": ""
+    },
+    "filtersUpcomingEventsChipLabel": "Upcoming",
+    "@filtersUpcomingEventsChipLabel": {
+        "description": ""
+    },
+    "filtersPastEventsChipLabel": "Past",
+    "@filtersPastEventsChipLabel": {
+        "description": ""
+    },
+    "blogPageMoreArticlesButtonLabel": "Load More Articles...",
+    "@blogPageMoreArticlesButtonLabel": {},
+    "blogPageWasNotAbleToLoadArticleErrorLabel": "Error, could not load article",
+    "@blogPageWasNotAbleToLoadArticleErrorLabel": {},
+    "blogPageWasNotAbleToLaunchURLErrorLabel": "Error, could not launch URL",
+    "@blogPageWasNotAbleToLaunchURLErrorLabel": {},
+    "blogPagesNoArticlesPublishedSoFarLabel": "No articles  have been published so far",
+    "@blogPagesNoArticlesPublishedSoFarLabel": {},
+    "eventsPageMoreInfoButtonLabel": "More Info",
+    "@eventsPageMoreInfoButtonLabel": {},
+    "eventsPagesNoEventsPublishedSoFarLabel": "No events  have been published so far",
+    "@eventsPagesNoEventsPublishedSoFarLabel": {},
+    "eventsPagesPublicEvent": "Public event (can be seen by anyone)",
+    "@eventsPagesPublicEvent": {},
+    "eventsPagesCreateEvent": "Create Event",
+    "@eventsPagesCreateEvent": {},
+    "eventsPagesSelectDateErrorLabel": "Please select a date",
+    "@eventsPagesSelectDateErrorLabel": {},
+    "eventsPagesTimeValidator": "Start time must be before end time",
+    "@eventsPagesTimeValidator": {},
+    "eventTitle": "Event Title",
+    "@eventTitle": {},
+    "eventsPagesStartDateLabel": "Start Date",
+    "@eventsPagesStartDateLabel": {},
+    "eventsPagesEndDateLabel": "End Date",
+    "@eventsPagesEndDateLabel": {},
+    "eventsPagesStartTime": "Start Time",
+    "@eventsPagesStartTime": {},
+    "eventsPagesEndTime": "End Time",
+    "@eventsPagesEndTime": {},
+    "eventsPagesFullDayEvent": "Full Day Event",
+    "@eventsPagesFullDayEvent": {},
+    "eventsPagesEventDescriptionLabel": "Event Description",
+    "@eventsPagesEventDescriptionLabel": {},
+    "eventsPagesEventCreatedSnackbarMessage": "Event created successfully",
+    "@eventsPagesEventCreatedSnackbarMessage": {},
+    "eventsPagesSelectGroupsLabel": "Select Groups",
+    "@eventsPagesSelectGroupsLabel": {},
+    "commentSectionAppbarTitle": "Comment Section",
+    "@commentSectionAppbarTitle": {},
+    "commentSectionRepliesTitle": "Replies",
+    "@commentSectionRepliesTitle": {},
+    "commentSectionAddCommentHintTextLabel": "Add a comment...",
+    "@commentSectionAddCommentHintTextLabel": {},
+    "commentSectionAddReplyHintTextLabel": "Add a reply...",
+    "@commentSectionAddReplyHintTextLabel": {},
+    "commentSectionReadMoreTextButtonLabel": "Read More",
+    "@commentSectionReadMoreTextButtonLabel": {},
+    "commentSectionShowLessTextButtonLabel": " Less",
+    "@commentSectionShowLessTextButtonLabel": {},
+    "surveysPagesNavbarButtonLabel": "Surveys",
+    "@surveysPagesNavbarButtonLabel": {},
+    "surveysPagesTakeSurveyButtonLabel": "Take Survey",
+    "@surveysPagesTakeSurveyButtonLabel": {},
+    "firebaseAuthErrorMessageEmailAlreadyInUse": "Email is already in use by another account.",
+    "@firebaseAuthErrorMessageEmailAlreadyInUse": {},
+    "aboutPageLicenceLabel": "License",
+    "@aboutPageLicenceLabel": {},
+    "aboutPageToSLabel": "NewsApp Terms of Service",
+    "@aboutPageToSLabel": {},
+    "aboutPagePrivacyPolicyLabel": "Print In Progress Privacy Policy",
+    "@aboutPagePrivacyPolicyLabel": {},
+    "aboutPageOpenSourceLicencesLabel": "Open source licenses",
+    "@aboutPageOpenSourceLicencesLabel": {},
+    "aboutPageLegalNoticeLabel": "Legal Notice",
+    "@aboutPageLegalNoticeLabel": {},
+    "aboutPageReadmeLabel": "Readme",
+    "@aboutPageReadmeLabel": {},
+    "aboutPageAppDescription": "For more information about the NewsApp System visit us at https://printinprogress.net",
+    "@aboutPageAppDescription": {},
+    "termsAndConditionsPrefix": "I accept the",
+    "@termsAndConditionsPrefix": {},
+    "termsAndConditionsLinkText": " ToS ",
+    "@termsAndConditionsLinkText": {},
+    "termsAndConditionsMiddle": "and ",
+    "@termsAndConditionsMiddle": {},
+    "privacyPolicyLinkText": "Privacy Policy",
+    "@privacyPolicyLinkText": {},
+    "termsAndConditionsSuffix": "",
+    "@termsAndConditionsSuffix": {},
+    "globalAboutUsLabel": "About",
+    "@globalAboutUsLabel": {},
+    "globalSettingsLabel": "Settings",
+    "@globalSettingsLabel": {},
+    "globalEmptyFormFieldErrorLabel": "Field can't be empty!",
+    "@globalEmptyFormFieldErrorLabel": {
+        "description": ""
+    },
+    "globalCancelButtonLabel": "Cancel",
+    "@globalCancelButtonLabel": {
+        "description": "label for all cancel buttons"
+    },
+    "globalNoButtonLabel": "No",
+    "@globalNoButtonLabel": {},
+    "globalYesButtonLabel": "Yes",
+    "@globalYesButtonLabel": {},
+    "globalConfirmationDialogLabel": "Are you sure?",
+    "@globalConfirmationDialogLabel": {
+        "description": "title for all confirmation dialogs of the application"
+    },
+    "globalSaveChangesButtonLabel": "Save changes",
+    "@globalSaveChangesButtonLabel": {},
+    "globalSaveSuccessChangesSnackbarMessage": "Changes saved successfully",
+    "@globalSaveSuccessChangesSnackbarMessage": {},
+    "globalBackToLoginLabel": "Back to Login",
+    "@globalBackToLoginLabel": {},
+    "globalFirstNameTextFieldHintText": "First name",
+    "@globalFirstNameTextFieldHintText": {
+        "description": "hint text for first name of user"
+    },
+    "globalLastNameTextFieldHintText": "Last name",
+    "@globalLastNameTextFieldHintText": {
+        "description": "hint text for last name of user"
+    },
+    "globalImgCouldNotBeFound": "Image could not be found or loaded",
+    "@globalImgCouldNotBeFound": {
+        "description": ""
+    },
+    "globalLogoutButtonLabel": "Logout",
+    "@globalLogoutButtonLabel": {
+        "description": ""
+    },
+    "globalSuccessSnackbarLabel": "Success!",
+    "@globalSuccessSnackbarLabel": {
+        "description": ""
+    },
+    "globalPrivacyPolicyLabel": "Privacy Policy",
+    "@globalPrivacyPolicyLabel": {
+        "description": ""
+    },
+    "globalToSLabel": "Terms of Service",
+    "@globalToSLabel": {
+        "description": ""
+    },
+    "globalApplyChangesButtonLabel": "Apply Changes",
+    "@globalApplyChangesButtonLabel": {
+        "description": ""
+    },
+    "globalGreetingOne": "Hello {userName}!",
+    "@globalGreetingOne": {
+        "description": "",
+        "placeholders": {
+            "userName": {}
+        }
+    },
+    "globalGreetingTwo": "Welcome, {userName}!",
+    "@globalGreetingTwo": {
+        "description": "",
+        "placeholders": {
+            "userName": {}
+        }
+    },
+    "globalPasswordLabel": "Password",
+    "@globalPasswordLabel": {
+        "description": "label for all password field and cards"
+    },
+    "globalEmailLabel": "Email",
+    "@globalEmailLabel": {
+        "description": ""
+    },
+    "globalReauthenticateLabel": "Please Authenticate yourself",
+    "@globalReauthenticateLabel": {
+        "description": ""
+    },
+    "globalUnexpectedErrorLabel": "An Unexpected Error Has Occurred!",
+    "@globalUnexpectedErrorLabel": {
+        "description": ""
+    },
+    "globalNoInternetConnectionErrorLabel": "No Internet Connection",
+    "@globalNoInternetConnectionErrorLabel": {},
+    "globalOfflineBannerLabel": "You are offline. Some functionality may be limited. All changes will be submitted once you're online again.",
+    "@globalOfflineBannerLabel": {},
+    "globalSubmitLabel": "Submit",
+    "@globalSubmitLabel": {},
+    "globalResendEmailButtonLabel": "Resend Email",
+    "@globalResendEmailButtonLabel": {},
+    "globalContinueButtonLabel": "Continue",
+    "@globalContinueButtonLabel": {},
+    "globalLabelWeek": "Week",
+    "@globalLabelWeek": {},
+    "globalLabelMonth": "Month",
+    "@globalLabelMonth": {},
+    "globalLabelOverview": "Overview",
+    "@globalLabelOverview": {},
+    "globalSearchGroups": "Search Groups",
+    "@globalSearchGroups": {},
+    "globalSelectGroups": "Select Groups",
+    "@globalSelectGroups": {},
+    "globalGoBackLabel": "Go Back",
+    "@globalGoBackLabel": {}
+}

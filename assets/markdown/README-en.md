@@ -1,0 +1,4 @@
+# edConnect
+
+We have developed the edConnect System to digitize newspapers of different institutions and companies and to connect the institutions/companies with their members through eg: Push notifications and updates directly to their mobile phones. The NewsApp is, so to speak, the bulletin board of your organization or company. With the edConnect System your students, employees or members will never again forget an event, a training or any other activity and will always be up to date with what is happening at your organization.
+If you want to learn more about our company and our services, please visit [printinprogress.net](printinprogress.net).

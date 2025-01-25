@@ -1,125 +1,280 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl_standalone.dart';
+import 'package:edconnect_mobile/constants.dart';
+import 'package:edconnect_mobile/models/providers/connectivity_provider.dart';
+import 'package:edconnect_mobile/models/firebase_messaging_api.dart';
+import 'package:edconnect_mobile/models/providers/modulesprovider.dart';
+import 'package:edconnect_mobile/models/providers/orgprovider.dart';
+import 'package:edconnect_mobile/models/providers/themeprovider.dart';
+import 'package:edconnect_mobile/pages/auth_pages/select_org_page.dart';
+import 'package:edconnect_mobile/pages/home_page/main_page.dart';
+import 'package:provider/provider.dart';
+import 'firebase_options.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  FirebaseFirestore.instance.settings =
+      const Settings(persistenceEnabled: true);
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  // catches all asynchronous errors
+  PlatformDispatcher.instance.onError = (exception, stackTrace) {
+    FirebaseCrashlytics.instance
+        .recordError(exception, stackTrace, fatal: true);
+    return true;
+  };
+
+  await FirebaseMessagingApi().initNotifications();
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+  findSystemLocale();
+  runApp(const NewsApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NewsApp extends StatefulWidget {
+  const NewsApp({super.key});
 
-  // This widget is the root of your application.
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
+
+  @override
+  State<NewsApp> createState() => _NewsAppState();
+}
+
+class _NewsAppState extends State<NewsApp> {
+  ThemeProvider themeChangeProvider = ThemeProvider();
+  OrgProvider currentOrgProvider = OrgProvider();
+  DatabaseCollectionProvider databaseProvider = DatabaseCollectionProvider();
+  ColorANDLogoProvider currentColorSchemeProvider = ColorANDLogoProvider();
+  UserModulesProvider userModulesProvider = UserModulesProvider();
+  ConnectivityProvider connectivityProvider = ConnectivityProvider();
+  StreamSubscription? _userModulesSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    currentOrgProvider = OrgProvider(fetchUserModules: fetchUserModules);
+    initializeDateFormatting();
+    getCurrentAppTheme();
+    getCurrentAppOrg();
+    setRootCollection();
+    initializeColorScheme();
+    fetchUserModules();
+
+    FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+
+    // FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  }
+
+  void getCurrentAppTheme() async {
+    themeChangeProvider.darkTheme =
+        await themeChangeProvider.themePreference.getTheme();
+  }
+
+  void getCurrentAppOrg() async {
+    currentOrgProvider.org = await currentOrgProvider.currentOrg.getOrg();
+  }
+
+  void setRootCollection() async {
+    databaseProvider
+        .setRootCollection(await currentOrgProvider.currentOrg.getOrg());
+  }
+
+  void initializeColorScheme() async {
+    if (await currentOrgProvider.currentOrg.getOrg() != '') {
+      DocumentSnapshot<Map<String, dynamic>> orgRef = await FirebaseFirestore
+          .instance
+          .collection(await currentOrgProvider.currentOrg.getOrg())
+          .doc('newsapp')
+          .get();
+      String primaryColor = orgRef['primary_color'];
+      primaryColor = '0xFF${primaryColor.replaceAll('#', '')}';
+      String secondaryColor = orgRef['secondary_color'];
+      secondaryColor = '0xFF${secondaryColor.replaceAll('#', '')}';
+      String logoLink = orgRef['logo_link'];
+      if (primaryColor.isNotEmpty && primaryColor != '0xFF') {
+        currentColorSchemeProvider.setPrimaryColor(primaryColor);
+      } else {
+        currentColorSchemeProvider.setPrimaryColor('0xFF192B4C');
+      }
+      if (secondaryColor.isNotEmpty && secondaryColor != '0xFF') {
+        currentColorSchemeProvider.setSecondaryColor(secondaryColor);
+      } else {
+        currentColorSchemeProvider.setSecondaryColor('0xFF01629C');
+      }
+      if (logoLink.isNotEmpty && logoLink != '') {
+        final checkURL = await http.head(Uri.parse(logoLink));
+        if (checkURL.statusCode == 200) {
+          currentColorSchemeProvider.setLogoLink(logoLink);
+        } else {
+          currentColorSchemeProvider.setLogoLink('');
+        }
+      }
+    } else {
+      currentColorSchemeProvider.setPrimaryColor('0xFF192B4C');
+      currentColorSchemeProvider.setSecondaryColor('0xFF01629C');
+    }
+    currentColorSchemeProvider.customerName =
+        await currentColorSchemeProvider.colors.getCustomerName();
+  }
+
+  void fetchUserModules() async {
+    if (await currentOrgProvider.currentOrg.getOrg() != '') {
+      _userModulesSubscription = FirebaseFirestore.instance
+          .collection(await currentOrgProvider.currentOrg.getOrg())
+          .doc('newsapp')
+          .snapshots()
+          .listen((DocumentSnapshot<Map<String, dynamic>> orgRef) {
+        List<String> userModules = List<String>.from(orgRef['modules']);
+        userModulesProvider.userModules = userModules;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _userModulesSubscription?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) {
+            return themeChangeProvider;
+          }),
+          ChangeNotifierProvider(create: (context) {
+            return currentOrgProvider;
+          }),
+          ChangeNotifierProvider(create: (context) {
+            return databaseProvider;
+          }),
+          ChangeNotifierProvider(create: (context) {
+            return currentColorSchemeProvider;
+          }),
+          ChangeNotifierProvider(create: (context) {
+            return userModulesProvider;
+          }),
+          ChangeNotifierProvider(create: (context) {
+            return connectivityProvider;
+          }),
+        ],
+        child: Consumer6<ThemeProvider, OrgProvider, DatabaseCollectionProvider,
+            ColorANDLogoProvider, UserModulesProvider, ConnectivityProvider>(
+          builder: (context,
+              themeProvider,
+              orgProvider,
+              databaseProvider,
+              currentColorSchemeProvider,
+              userModulesProvider,
+              connectivityProvider,
+              child) {
+            return MaterialApp(
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              debugShowCheckedModeBanner: false,
+              title: currentColorSchemeProvider.customerName,
+              routes: {
+                '/main': (context) => const MainPage(),
+                '/selectOrg': (context) => const SelectOrgPage(),
+              },
+              navigatorObservers: [NewsApp.observer],
+              themeMode: themeChangeProvider.darkTheme
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+              darkTheme: ThemeData(
+                useMaterial3: true,
+                fontFamily: 'Inter',
+                textButtonTheme: TextButtonThemeData(
+                  style: TextButton.styleFrom(
+                      foregroundColor: Colors.white, iconColor: Colors.white),
+                ),
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+                outlinedButtonTheme: OutlinedButtonThemeData(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+                colorScheme: ColorScheme.dark(
+                  primary:
+                      Color(int.parse(currentColorSchemeProvider.primaryColor)),
+                  onPrimary: Colors.white,
+                  secondary: Color(
+                      int.parse(currentColorSchemeProvider.secondaryColor)),
+                  onSecondary: Colors.white,
+                  background: Colors.grey.shade900,
+                  surface: Colors.grey.shade900,
+                  shadow: Colors.grey.shade700,
+                ),
+                tabBarTheme: const TabBarTheme(
+                  dividerColor: Colors.transparent,
+                  indicatorColor: Color.fromRGBO(202, 196, 208, 1),
+                  labelColor: Color.fromRGBO(202, 196, 208, 1),
+                ),
+                navigationRailTheme: const NavigationRailThemeData(
+                    selectedIconTheme:
+                        IconThemeData(color: Color.fromRGBO(202, 196, 208, 1)),
+                    unselectedIconTheme:
+                        IconThemeData(color: Color.fromRGBO(202, 196, 208, 1)),
+                    unselectedLabelTextStyle:
+                        TextStyle(color: Color.fromRGBO(202, 196, 208, 1)),
+                    selectedLabelTextStyle:
+                        TextStyle(color: Color.fromRGBO(202, 196, 208, 1))),
+                primaryColor:
+                    Color(int.parse(currentColorSchemeProvider.primaryColor)),
+              ),
+              theme: ThemeData(
+                useMaterial3: true,
+                fontFamily: 'Inter',
+                colorScheme: ColorScheme.light(
+                  primary:
+                      Color(int.parse(currentColorSchemeProvider.primaryColor)),
+                  onPrimary: Colors.white,
+                  secondary: Color(
+                      int.parse(currentColorSchemeProvider.secondaryColor)),
+                  onSecondary: Colors.white,
+                ),
+                tabBarTheme: const TabBarTheme(
+                  dividerColor: Colors.transparent,
+                  indicatorColor: Colors.white,
+                  labelColor: Colors.white,
+                ),
+                primaryColor:
+                    Color(int.parse(currentColorSchemeProvider.primaryColor)),
+              ),
+              home:
+                  currentOrgProvider.org == '' || currentOrgProvider.org.isEmpty
+                      ? const SelectOrgPage()
+                      : const MainPage(),
+            );
+          },
+        ));
   }
 }

@@ -1,0 +1,4 @@
+# NewsApp
+
+Wir haben das NewsApp System dafür entwickelt um die Zeitungen verschiedener Institutionen und Unternehmen zu digitalisieren und um die Verbindung der Institution/Unternehmen mit ihren Mitgliedern durch z.B.: Push Nachrichten und Updates direkt auf ihre Handys zu fördern. Die NewsApp ist sozusagen das schwarze Brett ihrer Organisation oder ihres Unternehmens. Mit der NewsApp werden ihre Schüler, Mitarbeiter oder Mitglieder nie mehr ein Ereignis, eine Fortbildung oder sonstige events vergessen und immer auf dem neusten Stand sein was bei ihnen passiert.
+Fall Sie mehr über unser Unternehmen und unsere Angebote erfahren wollen besuchen Sie uns gerne unter [printinprogress.net](printinprogress.net).
