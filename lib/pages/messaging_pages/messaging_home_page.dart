@@ -1,7 +1,6 @@
 import 'package:cryptography/cryptography.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:edconnect_mobile/constants.dart';
 import 'package:edconnect_mobile/delegates/search_delegates/abstract_search_delegate.dart';
 import 'package:edconnect_mobile/delegates/search_delegates/messaging_search_delegates.dart';

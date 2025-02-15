@@ -310,7 +310,7 @@ class _EventsState extends State<Events> {
             decoration: BoxDecoration(
               color: isInMonth
                   ? Colors.transparent
-                  : Colors.grey.shade900.withOpacity(0.2),
+                  : Color(0xFF212121).withOpacity(0.2),
             ),
             child: SingleChildScrollView(
               child: Column(
@@ -399,7 +399,7 @@ class _EventsState extends State<Events> {
           ),
           rightIcon: Icon(
             Icons.arrow_forward,
-            color: Colors.white60,
+            color: Color.fromRGBO(255, 255, 255, 0.6),
           ),
           headerTextStyle: TextStyle(
             color: Colors.white60,

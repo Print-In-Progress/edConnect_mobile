@@ -6,7 +6,7 @@
     "aboutPageLicenceLabel": "Lizenz",
     "aboutPageOpenSourceLicencesLabel": "Open Source-Lizenzen",
     "aboutPagePrivacyPolicyLabel": "Datenschutzerklärung",
-    "aboutPageReadmeLabel": "Liesmich",
+    "abouPageReadmeLabel": "Liesmich",
     "aboutPageToSLabel": "NewsApp-Nutzungsbedingungen",
     "authPagesAccessDeniedErrorMessage": "Sie haben nicht die nötigen Zugriffsrechte. Falls Sie diese benötigen oder haben sollten wenden Sie sich bitte an den zuständigen Administrator ihrer Organisation.",
     "authPagesAccountAlreadyExistsWithOtherOrgErrorMessage": "Du hast bereits einen Account bei einer anderen Organisation, die die NewsApp verwendet. Bitte melde dich an, indem du die folgenden Felder ausfüllst, und wir werden dich dieser Organisation hinzufügen.",
