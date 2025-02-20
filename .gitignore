@@ -57,6 +57,7 @@ key.properties
 *.ipr
 *.iws
 .idea/
+edconnect_mobile.code-workspace
 
 # Android specific
 **/android/**/gradle-wrapper.jar
@@ -131,3 +132,4 @@ xcuserdata
 **/*.userosscache
 **/*.sln.docstates
 **/*.cache
+
